@@ -7,8 +7,10 @@
     --bg-card-hover: #1e1e1e;
     --text-primary: #f0f0f0;
     --text-secondary: #a0a0a0;
-    --accent-color: #00f3ff; /* Cyan Neon */
-    --accent-secondary: #bc13fe; /* Purple Neon */
+    --accent-color: #00f3ff;
+    /* Cyan Neon */
+    --accent-secondary: #bc13fe;
+    /* Purple Neon */
     --gradient-main: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
     --font-main: 'Outfit', sans-serif;
     --transition: all 0.3s ease;
@@ -84,6 +86,7 @@ ul {
 .text-highlight {
     background: var(--gradient-main);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
 }
@@ -167,7 +170,8 @@ ul {
     font-weight: 500;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
     color: var(--accent-color);
 }
 
@@ -292,9 +296,20 @@ ul {
 }
 
 @keyframes blob-bounce {
-    0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translateY(0); }
-    50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; transform: translateY(-20px); }
-    100% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%; transform: translateY(0); }
+    0% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: translateY(0);
+    }
+
+    50% {
+        border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%;
+        transform: translateY(0);
+    }
 }
 
 .scroll-down {
@@ -311,9 +326,22 @@ ul {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
 }
 
 /* -----------------------------------------------------------
@@ -491,8 +519,17 @@ ul {
     color: rgba(255, 255, 255, 0.8);
 }
 
-.gradient-1 { background: linear-gradient(45deg, #1cb5e0 0%, #000851 100%); }
-.gradient-2 { background: linear-gradient(to right, #8e2de2, #4a00e0); }
+.gradient-1 {
+    background: linear-gradient(45deg, #1cb5e0 0%, #000851 100%);
+}
+
+.gradient-2 {
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+}
+
+.gradient-3 {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
 
 .project-info {
     padding: 25px;
@@ -711,17 +748,38 @@ footer {
    RESPONSIVE DESIGN
 ----------------------------------------------------------- */
 @media (max-width: 991px) {
-    .hero .title { font-size: 3.5rem; }
-    .hero .role { font-size: 1.5rem; }
-    .hero-image { width: 300px; height: 300px; }
-    .blob { width: 280px; height: 280px; }
-    .contact-wrapper { grid-template-columns: 1fr; }
-    .two-col-grid { grid-template-columns: 1fr; }
+    .hero .title {
+        font-size: 3.5rem;
+    }
+
+    .hero .role {
+        font-size: 1.5rem;
+    }
+
+    .hero-image {
+        width: 300px;
+        height: 300px;
+    }
+
+    .blob {
+        width: 280px;
+        height: 280px;
+    }
+
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .two-col-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
-    .menu-toggle { display: flex; }
-    
+    .menu-toggle {
+        display: flex;
+    }
+
     .nav-menu {
         position: absolute;
         top: var(--header-height);
@@ -733,21 +791,36 @@ footer {
         transition: 0.4s;
     }
 
-    .nav-menu.active { left: 0; }
+    .nav-menu.active {
+        left: 0;
+    }
 
     .hero {
-        flex-direction: column-reverse; /* move text below image on mobile usually, or keep standard. Let's keep standard but column */
+        flex-direction: column-reverse;
+        /* move text below image on mobile usually, or keep standard. Let's keep standard but column */
         justify-content: center;
         text-align: center;
         padding-top: 120px;
         height: auto;
         padding-bottom: 50px;
     }
-    
-    .hero .container { flex-direction: column-reverse; gap: 40px; }
-    .hero-content { align-items: center; display: flex; flex-direction: column; }
-    
-    .about-content { grid-template-columns: 1fr; }
-    
-    .hero .title { font-size: 2.8rem; }
+
+    .hero .container {
+        flex-direction: column-reverse;
+        gap: 40px;
+    }
+
+    .hero-content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .hero .title {
+        font-size: 2.8rem;
+    }
 }
