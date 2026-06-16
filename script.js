@@ -42,27 +42,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Contact Form Submission (Mock)
+    // Contact Form Submission
     const form = document.querySelector('.contact-form');
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            // Get values
             const btn = form.querySelector('button');
             const originalText = btn.innerHTML;
             
             btn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
-            
-            setTimeout(() => {
-                btn.innerHTML = 'Message Sent! <i class="fas fa-check"></i>';
-                btn.style.background = '#00ff88';
-                form.reset();
-                
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let jsonResponse = await response.json();
+                if (response.status === 200) {
+                    btn.innerHTML = 'Message Sent! <i class="fas fa-check"></i>';
+                    btn.style.background = '#00ff88';
+                    form.reset();
+                } else {
+                    console.log(jsonResponse);
+                    btn.innerHTML = 'Error! <i class="fas fa-exclamation-triangle"></i>';
+                    btn.style.background = '#ff3860';
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                btn.innerHTML = 'Error! <i class="fas fa-exclamation-triangle"></i>';
+                btn.style.background = '#ff3860';
+            })
+            .then(() => {
                 setTimeout(() => {
                     btn.innerHTML = originalText;
                     btn.style.background = '';
+                    btn.disabled = false;
                 }, 3000);
-            }, 1500);
+            });
         });
     }
 });
